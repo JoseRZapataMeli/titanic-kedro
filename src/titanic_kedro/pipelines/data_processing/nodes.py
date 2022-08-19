@@ -9,8 +9,8 @@ import pandas as pd
 
 def split_data(
     data: pd.DataFrame, parameters: Dict[str, Any]
-) -> Tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:
-    """Splits data into features and target training and test sets.
+) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    """Splits data into training and test sets.
 
     Args:
         data: Data containing features and target.
@@ -23,10 +23,4 @@ def split_data(
         frac=parameters["train_fraction"], random_state=parameters["random_state"]
     )
     data_test = data.drop(data_train.index)
-
-    X_train = data_train.drop(columns=parameters["target_column"])
-    X_test = data_test.drop(columns=parameters["target_column"])
-    y_train = data_train[parameters["target_column"]]
-    y_test = data_test[parameters["target_column"]]
-
-    return X_train, X_test, y_train, y_test
+    return data_train, data_test

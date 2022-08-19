@@ -6,3 +6,13 @@ titanic:
   type: pandas.CSVDataSet
   filepath: data/01_raw/titanic_csv.csv
   layer: raw
+
+Data_train:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/titanic_train.csv
+  layer: raw
+
+Data_test:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/titanic_test.csv
+  layer: raw    
