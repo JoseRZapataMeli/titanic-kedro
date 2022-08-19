@@ -1,0 +1,8 @@
+# This is a boilerplate parameters config generated for pipeline 'data_processing'
+# using Kedro 0.18.2.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://kedro.readthedocs.io/en/0.18.2/kedro_project_setup/configuration.html#parameters
+train_fraction: 0.8
+random_state: 3
+target_column: survived
