@@ -53,4 +53,4 @@ def drop_rows_with_nan(data: pd.DataFrame) -> pd.DataFrame:
         Data without rows with NaN values.
     """
 
-    return data.dropna(axis=0))    
+    return data.dropna(axis=0)    
