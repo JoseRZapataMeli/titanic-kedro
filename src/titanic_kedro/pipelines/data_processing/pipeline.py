@@ -4,7 +4,7 @@ generated using Kedro 0.18.2
 """
 
 from kedro.pipeline import Pipeline, node, pipeline
-from .nodes import split_data
+from .nodes import drop_rows_with_nan, split_data
 
 
 def create_pipeline(**kwargs) -> Pipeline:
@@ -15,6 +15,19 @@ def create_pipeline(**kwargs) -> Pipeline:
                 inputs=["titanic", "parameters"],
                 outputs=["Data_train", "Data_test"],
                 name="split",
+            ),
+            node(
+                func=drop_rows_with_nan,
+                inputs=["Data_train", "parameters"],
+                outputs="Data_train_no_nan"
+                
+            ),
+            node(
+                func=drop_rows_with_nan,
+                inputs=["Data_test", "parameters"],
+                outputs="Data_test_no_nan"
+                
             )
-        ]
+        ],
+        tags=['dp_tag'],
     )
