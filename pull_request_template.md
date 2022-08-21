@@ -1,7 +1,7 @@
 ## Titulo
 
 ## Tarea
-[RODI-73](https://mercadolibre.atlassian.net/browse/RODI-73)
+
 
 ## Requerimiento
 [Descripción General del requerimiento]
