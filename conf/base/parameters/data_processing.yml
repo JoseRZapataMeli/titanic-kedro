@@ -5,6 +5,18 @@
 # Link: https://kedro.readthedocs.io/en/0.18.2/kedro_project_setup/configuration.html#parameters
 url: https://www.dropbox.com/s/fkszmq0pi5hv0mv/titanic_csv.csv?dl=1
 
+cols_to_drop:
+  - name
+  - sibsp
+  - parch
+  - ticket
+  - fare
+  - cabin
+  - embarked
+  - boat
+  - body
+  - home.dest
+
 split:
   train_fraction: 0.8
   random_state: 3

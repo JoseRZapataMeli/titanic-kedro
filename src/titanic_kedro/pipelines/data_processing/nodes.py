@@ -32,6 +32,18 @@ def split_data(
     data_test = data.drop(data_train.index)
     return data_train, data_test
 
+def drop_cols(data: pd.DataFrame, parameters: Dict[str, Any]) -> pd.DataFrame:
+    """Drops columns from a list.
+    Args:
+        data: Data frame containing features and target.
+        parameters: Dict Parameters defined in conf/base/parameters/data_processing.yml
+
+    Returns:
+        Dataframe with dropped columns.
+    """
+
+    return data.drop(parameters['cols_to_drop'],axis=1)    
+
 def drop_rows_with_nan(data: pd.DataFrame, parameters:Dict[str, Any]) -> pd.DataFrame:
     """Drops rows with NaN values.
 
