@@ -2,9 +2,12 @@
 This is a boilerplate pipeline 'data_processing'
 generated using Kedro 0.18.2
 """
+import logging
 from typing import Any, Dict, Tuple
 import pandas as pd
 
+
+logger = logging.getLogger(__name__)
 def get_data(parameters: Dict[str, Any]) -> pd.DataFrame:
     """Downloads data from url.
     Args:
@@ -41,8 +44,9 @@ def drop_cols(data: pd.DataFrame, parameters: Dict[str, Any]) -> pd.DataFrame:
     Returns:
         Dataframe with dropped columns.
     """
-
-    return data.drop(parameters['cols_to_drop'],axis=1)    
+    data = data.drop(columns = parameters['cols_to_drop'],axis=1)
+    logger.info(f"Shape = {data.shape} after dropping columns")    
+    return data     
 
 def drop_rows_with_nan(data: pd.DataFrame) -> pd.DataFrame:
     """Drops rows with NaN values.
@@ -52,5 +56,6 @@ def drop_rows_with_nan(data: pd.DataFrame) -> pd.DataFrame:
     Returns:
         Data without rows with NaN values.
     """
-
-    return data.dropna(axis=0)    
+    data = data.dropna(axis=0)
+    logger.info(f"Shape = {data.shape} after dropping nan rows")
+    return data    
