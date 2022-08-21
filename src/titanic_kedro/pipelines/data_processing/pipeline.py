@@ -38,12 +38,6 @@ def create_pipeline(**kwargs) -> Pipeline:
                 inputs=["Data_train", "parameters"],
                 outputs="Data_train_no_nan"
                 
-            ),
-            node(
-                func=drop_rows_with_nan,
-                inputs=["Data_test", "parameters"],
-                outputs="Data_test_no_nan"
-                
             )
         ],
         tags=['dp_tag'],
