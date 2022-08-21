@@ -31,13 +31,13 @@ def create_pipeline(**kwargs) -> Pipeline:
                 func=drop_cols,
                 inputs=["Data_train", "parameters"],
                 outputs="Data_train_drop_cols",
-                name="drop_cols_node",
+                name="drop_cols",
             ),
             node(
                 func=drop_rows_with_nan,
                 inputs=["Data_train", "parameters"],
                 outputs="Data_train_no_nan"
-                
+                name="drop_rows_no_nan",
             )
         ],
         tags=['dp_tag'],
