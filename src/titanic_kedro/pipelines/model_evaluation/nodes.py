@@ -13,4 +13,5 @@ def evaluate_model(predictions: pd.Series, test_labels: pd.Series):
     score = accuracy_score(test_labels['survived'].values, predictions.values)
     logger = logging.getLogger(__name__)
     logger.info(f"Model accuracy = {score}")
-    return score
+    # parse the score to a string with only 4 decimal places
+    return f"{score:.4f}"

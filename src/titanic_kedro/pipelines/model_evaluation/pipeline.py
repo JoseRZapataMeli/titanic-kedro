@@ -12,13 +12,13 @@ def create_pipeline(**kwargs) -> Pipeline:
             node(
                 func=evaluate_model,
                 inputs=["predictions_train", "Data_train_no_nan"],
-                outputs="train_score",
+                outputs="score_train",
                 name="train_model_evaluation"
             ),
             node(
                 func=evaluate_model,
                 inputs=["predictions_test", "Data_test_no_nan"],
-                outputs="test_score",
+                outputs="score_test",
                 name="test_model_evaluation"
             )            
         ],

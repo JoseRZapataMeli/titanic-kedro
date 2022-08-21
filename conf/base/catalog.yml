@@ -15,4 +15,14 @@ Data_train:
 Data_test:
   type: pandas.CSVDataSet
   filepath: data/01_raw/titanic_test.csv
-  layer: raw    
+  layer: raw
+
+score_train: 
+  type: kedro.extras.datasets.text.TextDataSet
+  filepath: data/07_model_output/train_score.txt
+  layer: evaluation
+
+score_test: 
+  type: kedro.extras.datasets.text.TextDataSet
+  filepath: data/07_model_output/test_score.txt
+  layer: evaluation
