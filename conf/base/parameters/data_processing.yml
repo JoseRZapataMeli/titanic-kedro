@@ -3,6 +3,13 @@
 #
 # Documentation for this file format can be found in "Parameters"
 # Link: https://kedro.readthedocs.io/en/0.18.2/kedro_project_setup/configuration.html#parameters
-train_fraction: 0.8
-random_state: 3
-target_column: survived
+split:
+  train_fraction: 0.8
+  random_state: 3
+  target_column: survived
+
+drop_na_subset_cols:
+  - sex
+  - age
+  - pclass
+  - survived
