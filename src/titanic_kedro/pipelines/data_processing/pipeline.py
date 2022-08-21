@@ -28,5 +28,6 @@ def create_pipeline(**kwargs) -> Pipeline:
                 outputs="Data_test_no_nan"
                 
             )
-        ]
+        ],
+        tags=['dp_tag'],
     )

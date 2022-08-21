@@ -21,5 +21,6 @@ def create_pipeline(**kwargs) -> Pipeline:
                 outputs="test_score",
                 name="test_model_evaluation"
             )            
-        ]
+        ],
+        tags=['me_tag'],
     )

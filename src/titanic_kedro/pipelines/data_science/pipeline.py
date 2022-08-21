@@ -23,6 +23,7 @@ def create_pipeline(**kwargs) -> Pipeline:
                 outputs = "predictions_test",
                 name = "predict_test"
             )
-        ]
+        ],
+        tags=['ds_tag'],
     
     )
