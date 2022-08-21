@@ -4,12 +4,18 @@ generated using Kedro 0.18.2
 """
 
 from kedro.pipeline import Pipeline, node, pipeline
-from .nodes import drop_rows_with_nan, split_data
+from .nodes import drop_rows_with_nan, split_data, get_data
 
 
 def create_pipeline(**kwargs) -> Pipeline:
     return pipeline(
-        [
+        [   
+            node(
+                func=get_data,
+                inputs="parameters",
+                outputs="Data_raw",
+                name="get_data_raw",
+            ),
             node(
                 func=split_data,
                 inputs=["titanic", "parameters"],
