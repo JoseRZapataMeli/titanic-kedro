@@ -5,6 +5,15 @@ generated using Kedro 0.18.2
 from typing import Any, Dict, Tuple
 import pandas as pd
 
+def get_data(parameters: Dict[str, Any]) -> pd.DataFrame:
+    """Downloads data from url.
+    Args:
+        url: Url to download data from.
+    Returns: dataframe containing data.
+    """
+    return pd.read_csv(parameters['url'])
+
+
 def split_data(
     data: pd.DataFrame, parameters: Dict[str, Any]
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
