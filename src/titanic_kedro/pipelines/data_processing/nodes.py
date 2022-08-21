@@ -44,7 +44,7 @@ def drop_cols(data: pd.DataFrame, parameters: Dict[str, Any]) -> pd.DataFrame:
 
     return data.drop(parameters['cols_to_drop'],axis=1)    
 
-def drop_rows_with_nan(data: pd.DataFrame, parameters:Dict[str, Any]) -> pd.DataFrame:
+def drop_rows_with_nan(data: pd.DataFrame) -> pd.DataFrame:
     """Drops rows with NaN values.
 
     Args:
@@ -53,4 +53,4 @@ def drop_rows_with_nan(data: pd.DataFrame, parameters:Dict[str, Any]) -> pd.Data
         Data without rows with NaN values.
     """
 
-    return data.dropna(subset=parameters['drop_na_subset_cols'])    
+    return data.dropna(axis=0))    
