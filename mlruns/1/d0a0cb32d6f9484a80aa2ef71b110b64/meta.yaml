@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/jzapata/Documents/Codigo/titanic-kedro/mlruns/1/d0a0cb32d6f9484a80aa2ef71b110b64/artifacts
+end_time: 1661228752537
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: d0a0cb32d6f9484a80aa2ef71b110b64
+run_uuid: d0a0cb32d6f9484a80aa2ef71b110b64
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1661228752445
+status: 3
+tags: []
+user_id: jzapata
