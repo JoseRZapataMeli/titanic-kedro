@@ -4,6 +4,7 @@ generated using Kedro 0.18.2
 """
 import logging
 import pandas as pd
+import mlflow
 
 def train_model(classifier_fn, X_train: pd.DataFrame, y_train: pd.Series):
     """Trains the linear regression model.
@@ -17,9 +18,12 @@ def train_model(classifier_fn, X_train: pd.DataFrame, y_train: pd.Series):
     pass
     return
 
-def predict(test_df: pd.DataFrame) -> pd.Series:
+def predict(test_df: pd.DataFrame, name:str) -> pd.Series:
     """ predictions for dataframe"""
-
+    mlflow.set_experiment('titanic')
+    mlflow.set_tag("Model Version", 0)
+    mlflow.log_param(f"columns {name}",test_df.columns)
+    mlflow.log_param(f"shape {name}",test_df.shape)
 
     test_df['pred'] = 0
     test_df.loc[(test_df['sex']=='female') & (test_df['pclass']<3), 'pred'] = 1

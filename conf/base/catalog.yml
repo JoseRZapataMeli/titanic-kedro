@@ -22,6 +22,11 @@ Data_test:
   filepath: data/01_raw/titanic_test.csv
   layer: raw
 
+Data_train_no_nan:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/data_train_no_nan.csv
+  layer: raw
+
 score_train: 
   type: kedro.extras.datasets.text.TextDataSet
   filepath: data/07_model_output/train_score.txt

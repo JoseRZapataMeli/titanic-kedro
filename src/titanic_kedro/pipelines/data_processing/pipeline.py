@@ -4,7 +4,12 @@ generated using Kedro 0.18.2
 """
 
 from kedro.pipeline import Pipeline, node, pipeline
-from .nodes import drop_rows_with_nan, split_data, get_data
+from .nodes import (drop_cols, 
+                    drop_rows_with_nan, 
+                    split_data, 
+                    get_data, 
+                    drop_cols
+  )
 
 
 def create_pipeline(**kwargs) -> Pipeline:
@@ -23,16 +28,16 @@ def create_pipeline(**kwargs) -> Pipeline:
                 name="split",
             ),
             node(
-                func=drop_rows_with_nan,
+                func=drop_cols,
                 inputs=["Data_train", "parameters"],
-                outputs="Data_train_no_nan"
-                
+                outputs="Data_train_drop_cols",
+                name="drop_cols",
             ),
             node(
                 func=drop_rows_with_nan,
-                inputs=["Data_test", "parameters"],
-                outputs="Data_test_no_nan"
-                
+                inputs="Data_train_drop_cols",
+                outputs="Data_train_no_nan",
+                name="drop_rows_no_nan",
             )
         ],
         tags=['dp_tag'],
