@@ -1,4 +1,0 @@
-artifact_location: file:///Users/jzapata/Documents/Codigo/titanic-kedro/mlruns/1
-experiment_id: '1'
-lifecycle_stage: active
-name: titanic_kedro
