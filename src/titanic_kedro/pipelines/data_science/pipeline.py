@@ -13,13 +13,13 @@ def create_pipeline(**kwargs) -> Pipeline:
         [
             node(
                 func = predict,
-                inputs = "Data_train_no_nan",
+                inputs = ["Data_train_no_nan", 'params:train'],
                 outputs = "predictions_train",
                 name = "predict_train"
             ),
             node(
                 func = predict,
-                inputs = "Data_test_no_nan",
+                inputs = ["Data_test_no_nan",'params:test'],
                 outputs = "predictions_test",
                 name = "predict_test"
             )
