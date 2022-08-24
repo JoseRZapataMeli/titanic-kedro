@@ -6,7 +6,6 @@
 url: https://www.dropbox.com/s/fkszmq0pi5hv0mv/titanic_csv.csv?dl=1
 
 cols_to_drop:
-  - name
   - sibsp
   - parch
   - ticket
@@ -21,9 +20,3 @@ split:
   train_fraction: 0.8
   random_state: 3
   target_column: survived
-
-drop_na_subset_cols:
-  - sex
-  - age
-  - pclass
-  - survived
