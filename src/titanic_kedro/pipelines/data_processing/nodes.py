@@ -6,8 +6,9 @@ import logging
 from typing import Any, Dict, Tuple
 import pandas as pd
 
-
 logger = logging.getLogger(__name__)
+
+
 def get_data(parameters: Dict[str, Any]) -> pd.DataFrame:
     """Downloads data from url.
     Args:
@@ -18,7 +19,7 @@ def get_data(parameters: Dict[str, Any]) -> pd.DataFrame:
 
 
 def split_data(
-    data: pd.DataFrame, parameters: Dict[str, Any]
+        data: pd.DataFrame, parameters: Dict[str, Any]
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """Splits data into training and test sets.
 
@@ -44,9 +45,10 @@ def drop_cols(data: pd.DataFrame, parameters: Dict[str, Any]) -> pd.DataFrame:
     Returns:
         Dataframe with dropped columns.
     """
-    data = data.drop(columns = parameters['cols_to_drop'],axis=1)
-    logger.info(f"Shape = {data.shape} after dropping columns")    
-    return data     
+    data = data.drop(columns=parameters['cols_to_drop'], axis=1)
+    logger.info(f"Shape = {data.shape} after dropping columns")
+    return data
+
 
 def drop_rows_with_nan(data: pd.DataFrame) -> pd.DataFrame:
     """Drops rows with NaN values.
@@ -58,4 +60,34 @@ def drop_rows_with_nan(data: pd.DataFrame) -> pd.DataFrame:
     """
     data = data.dropna(axis=0)
     logger.info(f"Shape = {data.shape} after dropping nan rows")
-    return data    
+    return data
+
+
+def impute_age(data: pd.DataFrame) -> pd.DataFrame:
+    """Imputes age columns based on People title
+
+    Args:
+        data: Data frame containing features and target.
+    Returns:
+        Data without rows with NaN values in age Colum.
+    """
+    data = data.dropna(how='all')
+    data['title'] = data['name'].str.extract('([A-Za-z]+)\\.', expand=True)
+
+    mapping = {'Mlle': 'Miss', 'Major': 'Mr', 'Col': 'Mr', 'Sir': 'Mr',
+               'Don': 'Mr', 'Mme': 'Mrs', 'Jonkheer': 'Mr', 'Lady': 'Mrs',
+               'Capt': 'Mr', 'Countess': 'Mrs', 'Ms': 'Miss', 'Dona': 'Mrs'}
+
+    data.replace({'title': mapping}, inplace=True)
+
+    # imputation
+    title_ages = dict(data.groupby('title')['age'].median())
+
+    # crear columna con el promedio de las edades por titulo
+    data['age_med'] = data['title'].apply(lambda x: title_ages[x])
+
+    # realizar imputacion de las edades faltantes
+    data['age'].fillna(data['age_med'], inplace=True)
+    del data['age_med']
+    logger.info(f"Shape = {data.shape} after impute age")
+    return data, title_ages
