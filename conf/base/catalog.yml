@@ -24,7 +24,7 @@ Data_test:
 
 Data_train_no_nan:
   type: pandas.CSVDataSet
-  filepath: data/02_intermediate/data_train_no_nan.csv
+  filepath: data/03_intermediate/data_train_no_nan.csv
   layer: raw
 
 score_train: 
